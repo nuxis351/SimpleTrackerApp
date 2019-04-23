@@ -28,4 +28,11 @@
             android:text="@string/tab_item_record_name" />
 
     </android.support.design.widget.TabLayout>
+
+    <FrameLayout
+        android:id="@+id/content_area"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
 </LinearLayout>
