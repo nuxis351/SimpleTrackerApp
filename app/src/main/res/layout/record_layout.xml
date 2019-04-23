@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/static_dist_traveled_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="31dp"
+        android:textSize="15dp"
+        android:text="@string/static_dist_traveled_text" />
+
+    <TextView
+        android:id="@+id/rec_distance_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/static_dist_traveled_text"
+        android:layout_below="@+id/static_dist_traveled_text"
+        android:layout_toStartOf="@+id/trip_chrono"
+        android:textAlignment="viewEnd"
+        android:text="@string/var_dist_traveled"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/distance_unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/top_speed_display"
+        android:layout_alignBottom="@+id/top_speed_display"
+        android:layout_toEndOf="@+id/top_speed_display"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+        android:text="@string/dist_unit"
+        android:textSize="8dp" />
+
+    <TextView
+        android:id="@+id/distance_unit2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/rec_distance_display"
+        android:layout_alignBottom="@+id/rec_distance_display"
+        android:layout_toEndOf="@+id/rec_distance_display"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+        android:text="@string/dist_unit"
+        android:textSize="8dp" />
+
+    <Chronometer
+        android:id="@+id/trip_chrono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/static_dist_traveled_text"
+        android:layout_alignBottom="@+id/static_dist_traveled_text"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@id/static_dist_traveled_text"
+        android:textAlignment="viewEnd"
+        android:layout_marginEnd="62dp"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/static_top_speed_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/rec_distance_display"
+        android:layout_below="@+id/rec_distance_display"
+        android:layout_marginTop="35dp"
+        android:text="@string/static_top_speed_text"
+        android:textSize="15dp"
+        />
+
+    <TextView
+        android:id="@+id/top_speed_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/static_top_speed_text"
+        android:layout_alignStart="@+id/static_top_speed_text"
+        android:layout_below="@+id/static_top_speed_text"
+        android:textAlignment="viewEnd"
+        android:text="@string/var_top_speed"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/static_avg_speed_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/rec_distance_display"
+        android:layout_below="@+id/top_speed_display"
+        android:layout_marginTop="35dp"
+        android:text="@string/static_avg_speed_text"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/avg_speed_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/static_avg_speed_text"
+        android:layout_alignEnd="@id/static_avg_speed_text"
+        android:layout_below="@+id/static_avg_speed_text"
+        android:textAlignment="viewEnd"
+        android:text="@string/var_avg_speed"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/distance_unit3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/avg_speed_display"
+        android:layout_alignBottom="@+id/avg_speed_display"
+        android:layout_toEndOf="@+id/avg_speed_display"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+        android:text="@string/dist_unit"
+        android:textSize="8dp" />
+
+    <Button
+        android:id="@+id/start_stop_session_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:padding="20dp"
+        android:paddingEnd="65dp"
+        android:paddingStart="65dp"
+        android:text="@string/record_run_button_text" />
+
+</RelativeLayout>
