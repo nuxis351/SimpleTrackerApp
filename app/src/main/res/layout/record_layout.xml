@@ -116,6 +116,37 @@
         android:text="@string/dist_unit"
         android:textSize="8dp" />
 
+    <TextView
+        android:id="@+id/static_tracker_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/rec_distance_display"
+        android:layout_below="@+id/avg_speed_display"
+        android:layout_marginTop="35dp"
+        android:text="@string/static_tracker_text"
+        android:textSize="10dp" />
+
+    <TextView
+        android:id="@+id/tracker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/static_tracker_text"
+        android:layout_below="@+id/static_tracker_text"
+        android:text="@string/tracker"
+        android:textSize="12dp"/>
+
+    <Button
+        android:id="@+id/select_tracker_button"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/tracker"
+        android:layout_toEndOf="@+id/tracker"
+        android:layout_marginStart="5dp"
+        android:minHeight="0dp"
+        android:textSize="7dp"
+        android:text="@string/static_tracker_select_text" />
+
     <Button
         android:id="@+id/start_stop_session_button"
         android:layout_width="wrap_content"

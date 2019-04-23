@@ -6,10 +6,13 @@
     <string name="static_dist_traveled_text">Distance Traveled</string>
     <string name="static_avg_speed_text">Average Speed</string>
     <string name="static_top_speed_text">Top Speed</string>
+    <string name="static_tracker_select_text">Select</string>
+    <string name="static_tracker_text">Tracker</string>
     <string name="var_dist_traveled">0000</string>
     <string name="var_avg_speed">0000</string>
     <string name="var_top_speed">0000</string>
     <string name="split_time">0000</string>
+    <string name="tracker">tracker</string>
     <string name="dist_unit">unit</string>
     <string name="record_run_button_text">Start</string>
 </resources>
