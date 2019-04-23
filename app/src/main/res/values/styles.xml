@@ -6,12 +6,15 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="windowActionBar">false</item>
-            <item name="windowNoTitle">true</item>
+    </style>
+    <style name="AltTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:colorPrimary">@color/colorAltPrimary</item>
+        <item name="android:colorPrimaryDark">@color/colorAltPrimaryDark</item>
+        <item name="android:colorAccent">@color/colorAltAccent</item>
     </style>
 
     <style name="TabLayoutTheme" parent="Widget.Design.TabLayout">
-        <item name="tabIndicatorColor">#FF4081</item>
+        <item name="tabIndicatorColor">@color/colorSecondary</item>
     </style>
 
 </resources>

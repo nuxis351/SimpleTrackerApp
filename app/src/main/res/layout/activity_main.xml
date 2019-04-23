@@ -14,6 +14,18 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:icon="@drawable/list_large"
-            android:text="string" />
+
+            android:text="@string/tab_item_trackers_name"/>
+        <android.support.design.widget.TabItem
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:icon="@drawable/list_large"
+            android:text="@string/tab_item_runs_name" />
+        <android.support.design.widget.TabItem
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:icon="@drawable/record_large"
+            android:text="@string/tab_item_record_name" />
+
     </android.support.design.widget.TabLayout>
 </LinearLayout>

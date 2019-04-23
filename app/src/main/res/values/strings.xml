@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">SimpleTracker</string>
+    <string name="tab_item_runs_name">Runs</string>
+    <string name="tab_item_trackers_name">Trackers</string>
+    <string name="tab_item_record_name">Record</string>
 </resources>
