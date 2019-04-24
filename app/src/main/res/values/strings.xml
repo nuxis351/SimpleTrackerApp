@@ -12,7 +12,7 @@
     <string name="var_avg_speed">0000</string>
     <string name="var_top_speed">0000</string>
     <string name="split_time">0000</string>
-    <string name="tracker">tracker</string>
+    <string name="tracker">--------</string>
     <string name="dist_unit">unit</string>
     <string name="record_run_button_text">Start</string>
 </resources>

@@ -27,8 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tabLayout = findViewById(R.id.tabs);
-        viewPager = findViewById(R.id.pager);
+        initializeActivityElements();
 
         TabInfo tabInfo = new TabInfo(tabLayout);
         viewPager.setAdapter(createPagerAdapter(tabLayout));
@@ -36,10 +35,16 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
         tabInfo.setTabIcons(tabLayout);
         tabInfo.setTabTexts(tabLayout);
+
+        viewPager.setCurrentItem(2);
     }
 
     private PagerAdapter createPagerAdapter(TabLayout tabLayout){
         PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         return pagerAdapter;
+    }
+    private void initializeActivityElements(){
+        tabLayout = findViewById(R.id.tabs);
+        viewPager = findViewById(R.id.pager);
     }
 }

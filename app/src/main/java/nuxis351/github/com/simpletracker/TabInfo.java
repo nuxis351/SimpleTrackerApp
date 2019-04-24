@@ -62,11 +62,4 @@ public class TabInfo {
        }
        public abstract void calledMethod();
    }
-
-    public CharSequence[] getTexts(){
-        return this.texts;
-    }
-    public Drawable[] getIcons(){
-        return this.icons;
-    }
 }
