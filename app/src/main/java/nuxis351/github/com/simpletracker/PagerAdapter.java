@@ -1,14 +1,17 @@
 package nuxis351.github.com.simpletracker;
 
+import android.graphics.drawable.Drawable;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.util.Log;
 
 /**
  * Created by nuxis on 4/23/2019.
  */
 
-public class PagerAdapter extends FragmentStatePagerAdapter {
+public class PagerAdapter extends FragmentPagerAdapter {
 
     int numTabs;
 
@@ -19,6 +22,7 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+        Log.v("tag",""+position);
         switch(position) {
             case 0:
                 TrackerListFragment trackListFrag = new TrackerListFragment();
@@ -34,8 +38,9 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
         }
     }
 
+
     @Override
     public int getCount() {
-        return 0;
+        return numTabs;
     }
 }
