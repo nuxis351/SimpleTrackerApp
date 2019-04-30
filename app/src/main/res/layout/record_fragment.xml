@@ -156,6 +156,6 @@
         android:padding="20dp"
         android:paddingEnd="65dp"
         android:paddingStart="65dp"
-        android:text="@string/record_run_button_text" />
+        android:text="@string/record_start_button_text" />
 
 </RelativeLayout>

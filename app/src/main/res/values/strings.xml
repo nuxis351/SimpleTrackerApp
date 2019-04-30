@@ -14,5 +14,6 @@
     <string name="split_time">0000</string>
     <string name="tracker">--------</string>
     <string name="dist_unit">unit</string>
-    <string name="record_run_button_text">Start</string>
+    <string name="record_start_button_text">Start</string>
+    <string name="record_stop_button_text">Stop</string>
 </resources>

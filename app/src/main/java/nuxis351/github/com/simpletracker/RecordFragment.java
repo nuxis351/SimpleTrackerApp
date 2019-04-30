@@ -1,5 +1,6 @@
 package nuxis351.github.com.simpletracker;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
@@ -40,11 +41,13 @@ public class RecordFragment extends Fragment {
         startStopTrackerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isChronRunning)
+                if (isChronRunning) {
                     chrono.stop();
-                else {
+                    startStopTrackerButton.setText(getResources().getText(R.string.record_start_button_text));
+                } else {
                     chrono.setBase(SystemClock.elapsedRealtime());
                     chrono.start();
+                    startStopTrackerButton.setText(getResources().getText(R.string.record_stop_button_text));
                 }
                 isChronRunning = !isChronRunning;
                 chronoCallbackListener.onChronoSwitch(!isChronRunning);
