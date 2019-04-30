@@ -1,26 +1,19 @@
 package nuxis351.github.com.simpletracker;
 
-import android.graphics.drawable.Drawable;
-import android.support.design.widget.TabItem;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
+import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
-import java.util.ArrayList;
-import java.util.List;
+public class MainActivity extends AppCompatActivity implements RecordFragment.OnChronoSwitchListener {
 
-public class MainActivity extends AppCompatActivity {
-
-    FrameLayout container;
-    FragmentManager fragmentManager;
-    RecordFragment recordFragment;
-
-    TabLayout tabLayout;
-    ViewPager viewPager;
+    private TabLayout tabLayout;
+    private CustomViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +32,14 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setCurrentItem(2);
     }
 
+    @Override
+    public void onAttachFragment(Fragment fragment){
+        if(fragment instanceof RecordFragment) {
+            RecordFragment recordFragment =(RecordFragment) fragment;
+            recordFragment.setChronoCallbackListener(this);
+        }
+    }
+
     private PagerAdapter createPagerAdapter(TabLayout tabLayout){
         PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         return pagerAdapter;
@@ -46,5 +47,31 @@ public class MainActivity extends AppCompatActivity {
     private void initializeActivityElements(){
         tabLayout = findViewById(R.id.tabs);
         viewPager = findViewById(R.id.pager);
+    }
+
+    @Override
+    public void onChronoSwitch(boolean chronoState) {
+        setViewPagerNavigation(chronoState);
+    }
+
+    public void setViewPagerNavigation(boolean pageingEnabled){
+        viewPager.setPagingEnabled(pageingEnabled);
+        setTabChildrenClickableValue(pageingEnabled);
+    }
+
+    private void setTabChildrenClickableValue(boolean isClickable){
+        LinearLayout tabStrip = ((LinearLayout) tabLayout.getChildAt(0));
+        if(isClickable)
+            tabStrip.setAlpha(1f);
+        else
+            tabStrip.setAlpha(0.5f);
+        tabStrip.setEnabled(isClickable);
+        for(int i = 0; i < tabStrip.getChildCount(); i++){
+            tabStrip.getChildAt(i).setClickable(isClickable);
+        }
+    }
+
+    public CustomViewPager getViewPager(){
+        return this.viewPager;
     }
 }
