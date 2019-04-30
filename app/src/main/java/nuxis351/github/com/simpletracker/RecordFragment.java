@@ -38,7 +38,22 @@ public class RecordFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState){
         initializeViews(view);
 
-        startStopTrackerButton.setOnClickListener(new View.OnClickListener() {
+        startStopTrackerButton.setOnClickListener(trackerButtonOnClickListener());
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        chrono.stop();
+    }
+
+    private void initializeViews(View view){
+        chrono = view.findViewById(R.id.trip_chrono);
+        startStopTrackerButton = view.findViewById(R.id.start_stop_tracker_button);
+    }
+
+    private View.OnClickListener trackerButtonOnClickListener(){
+        return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (isChronRunning) {
@@ -52,18 +67,7 @@ public class RecordFragment extends Fragment {
                 isChronRunning = !isChronRunning;
                 chronoCallbackListener.onChronoSwitch(!isChronRunning);
             }
-        });
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        chrono.stop();
-    }
-
-    private void initializeViews(View view){
-        chrono = view.findViewById(R.id.trip_chrono);
-        startStopTrackerButton = view.findViewById(R.id.start_stop_tracker_button);
+        };
     }
 
     public interface OnChronoSwitchListener {
