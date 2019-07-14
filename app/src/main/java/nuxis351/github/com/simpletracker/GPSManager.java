@@ -16,11 +16,10 @@ public class GPSManager {
 
     private boolean locationSkipped;
 
-    final private double MIN_LOCATION_ACCURACY = 17;
+    final private double MIN_LOCATION_ACCURACY = 10;
 
-    public GPSManager(Context context, Location location){
-        this.previousLocation.set(location);
-
+    public GPSManager(){
+        previousLocation = new Location("dummyprovidor");
         distance = 0;
         topSpeed = 0;
         avgSpeed = 0;
@@ -35,6 +34,11 @@ public class GPSManager {
                 } else {
                     distance += previousLocation.distanceTo(currentLocation);
                     previousLocation.set(currentLocation);
+                }
+                if(currentLocation.hasSpeed()){
+                    if(currentLocation.getSpeed() > topSpeed){
+                        topSpeed = currentLocation.getSpeed();
+                    }
                 }
             } else {
                 locationSkipped = true;
