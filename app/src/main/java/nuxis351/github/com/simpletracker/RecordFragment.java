@@ -15,6 +15,7 @@ import android.os.SystemClock;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,9 +30,12 @@ import com.google.android.gms.location.FusedLocationProviderApi;
  */
 
 public class RecordFragment extends Fragment {
+    private static final String TAG = "RECORDFRAGMENTTAG";
     private Chronometer chrono;
     private OnChronoSwitchListener chronoCallbackListener;
     private LocationServiceController locationServiceController;
+
+    private GPSManager gpsManager;
 
     private Button startStopTrackerButton;
     private TextView distanceTraveled;
@@ -56,22 +60,21 @@ public class RecordFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
         initializeViews(view);
-
         startStopTrackerButton.setOnClickListener(trackerButtonOnClickListener());
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        if(serviceBound) {
-            LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(mMessageReceiver);
-        }
-        serviceBound = false;
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        if(serviceBound) {
+            LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(mMessageReceiver);
+        }
+        serviceBound = false;
         chrono.stop();
     }
 
@@ -110,6 +113,7 @@ public class RecordFragment extends Fragment {
                 } else {
                     chrono.setBase(SystemClock.elapsedRealtime());
                     chrono.start();
+                    gpsManager = new GPSManager();
                     locationServiceController.bindLocationService();
                     LocalBroadcastManager.getInstance(getActivity()).registerReceiver(mMessageReceiver, new IntentFilter("GPSLocationUpdates"));
                     startStopTrackerButton.setText(getResources().getText(R.string.record_stop_button_text));
@@ -138,10 +142,19 @@ public class RecordFragment extends Fragment {
             Bundle b = intent.getBundleExtra("Location");
             Location location = (Location) b.getParcelable("Location");
             if(location != null){
-                distanceTraveled.setText(location.getLatitude()+"");
+                //distanceTraveled.setText(location.getLatitude()+"");
+                gpsManager.tick(location);
+                Log.v(TAG,"gpsManager ticked");
+                setRecordedViews(gpsManager);
             }
         }
     };
+
+    private void setRecordedViews(GPSManager gpsManager){
+        distanceTraveled.setText(gpsManager.getDistance()+"");
+        topSpeed.setText(gpsManager.getTopSpeed()+"");
+        avgSpeed.setText(gpsManager.getAvgSpeed()+"");
+    }
 
 }
 
