@@ -44,8 +44,14 @@ public class MainActivity extends AppCompatActivity implements RecordFragment.On
         viewPager.setCurrentItem(2);
     }
 
+    @Override
     public void onStop() {
         super.onStop();
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
         if(serviceBound) {
             stopLocationService();
             unbindService(locationServiceConnection);
