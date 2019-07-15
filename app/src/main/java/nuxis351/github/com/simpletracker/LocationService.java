@@ -39,6 +39,7 @@ public class LocationService extends Service {
         @Override
         public void onLocationChanged(Location location) {
             Log.v(TAG, "IN ON LOCATION CHANGE, lat=" + location.getLatitude() + ", lon=" + location.getLongitude());
+            Log.v(TAG, "IN ON LOCATION CHANGE, accuracy=" + location.getAccuracy());
             sendMessageToActivity(location, "GPS Location");
         }
 

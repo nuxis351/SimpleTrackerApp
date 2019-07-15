@@ -18,11 +18,12 @@ public class GPSManager {
     private boolean locationSkipped;
 
     static private long CHRONO_BASE;
-    final private double MIN_LOCATION_ACCURACY = 10;
+    final private double MIN_LOCATION_ACCURACY = 3;
 
     public GPSManager(long CHRONO_BASE){
         this.CHRONO_BASE = CHRONO_BASE;
         this.previousLocation = new Location("dummyprovidor");
+        this.locationSkipped = true;
         this.distance = 0;
         this.topSpeed = 0;
         this.avgSpeed = 0;
@@ -35,10 +36,12 @@ public class GPSManager {
                     locationSkipped = false;
                 } else {
                     setDistance(calculateDistance(previousLocation, currentLocation, distance));
+                    setTopSpeed(calculateTopSpeed(topSpeed, currentLocation));
+                    calculateAvgSpeed(distance, getElapsedTimeMillis());
                 }
-                setTopSpeed(calculateTopSpeed(topSpeed, currentLocation));
-                calculateAvgSpeed(distance, getElapsedTimeMillis());
-                previousLocation.set(currentLocation);
+                if(!locationSkipped) {
+                    previousLocation.set(currentLocation);
+                }
 
             } else {
                 locationSkipped = true;
@@ -47,6 +50,10 @@ public class GPSManager {
     }
 
     private double calculateDistance(Location previousLocation, Location currentLocation, double totalDistance){
+        if(currentLocation.getAccuracy() < previousLocation.distanceTo(currentLocation)) {
+            locationSkipped = true;
+            return -1;
+        }
         return totalDistance + previousLocation.distanceTo(currentLocation);
     }
     private double calculateTopSpeed(double previousTopSpeed, Location currentLocation){
@@ -75,7 +82,8 @@ public class GPSManager {
         }
     }
     private void setDistance(double distance){
-        this.distance = distance; // code to change meters to feet / miles / kilometer goes here?
+        if(distance > 0)
+            this.distance = distance; // code to change meters to feet / miles / kilometer goes here?
     }
 
     public double getDistance(){
