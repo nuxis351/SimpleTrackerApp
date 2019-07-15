@@ -2,4 +2,55 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content" android:layout_height="wrap_content">
 
+    <TextView
+        android:id="@+id/tracker_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:textAlignment="viewStart"
+        android:text="Tracker Name" />
+
+    <TextView
+        android:id="@+id/tracker_distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/tracker_distance_unit"
+        android:layout_toStartOf="@+id/tracker_distance_unit"
+        android:layout_marginEnd="10dp"
+        android:textAlignment="viewEnd"
+        android:textSize="12dp"
+        android:text="0000" />
+    <TextView
+        android:id="@+id/tracker_distance_unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:textSize="8dp"
+        android:text="@string/dist_unit"/>
+
+    <TextView
+        android:id="@+id/tracker_number_runs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/tracker_number_runs_text"
+        android:layout_toStartOf="@+id/tracker_distance_unit"
+        android:layout_marginEnd="10dp"
+        android:textAlignment="viewEnd"
+        android:textSize="12dp"
+        android:text="0000" />
+    <TextView
+        android:id="@+id/tracker_number_runs_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@id/tracker_distance_unit"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="15dp"
+        android:textSize="10dp"
+        android:text="@string/runs_unit"/>
 </RelativeLayout>
