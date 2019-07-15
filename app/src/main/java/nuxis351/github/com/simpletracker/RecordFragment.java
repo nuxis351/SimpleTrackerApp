@@ -113,7 +113,7 @@ public class RecordFragment extends Fragment {
                 } else {
                     chrono.setBase(SystemClock.elapsedRealtime());
                     chrono.start();
-                    gpsManager = new GPSManager();
+                    gpsManager = new GPSManager(chrono.getBase());
                     locationServiceController.bindLocationService();
                     LocalBroadcastManager.getInstance(getActivity()).registerReceiver(mMessageReceiver, new IntentFilter("GPSLocationUpdates"));
                     startStopTrackerButton.setText(getResources().getText(R.string.record_stop_button_text));
