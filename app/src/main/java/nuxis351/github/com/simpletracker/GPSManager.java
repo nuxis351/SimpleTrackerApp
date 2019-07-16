@@ -18,7 +18,7 @@ public class GPSManager {
     private boolean locationSkipped;
 
     static private long CHRONO_BASE;
-    final private double MIN_LOCATION_ACCURACY = 5;
+    final static public float MIN_LOCATION_ACCURACY = 5;
 
     public GPSManager(long CHRONO_BASE){
         this.CHRONO_BASE = CHRONO_BASE;
@@ -100,4 +100,5 @@ public class GPSManager {
     public double getAvgSpeed(){
         return this.avgSpeed;
     }
+    public Location getPreviousLocation(){ return this.previousLocation; }
 }
