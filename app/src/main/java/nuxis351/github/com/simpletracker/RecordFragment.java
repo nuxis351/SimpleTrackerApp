@@ -25,6 +25,10 @@ import android.widget.TextView;
 
 import com.google.android.gms.location.FusedLocationProviderApi;
 
+import java.text.DecimalFormat;
+
+import nuxis351.github.com.simpletracker.util.DecimalFormatter;
+
 /**
  * Created by nuxis on 4/23/2019.
  */
@@ -151,9 +155,10 @@ public class RecordFragment extends Fragment {
     };
 
     private void setRecordedViews(GPSManager gpsManager){
-        distanceTraveled.setText(gpsManager.getDistance()+"");
-        topSpeed.setText(gpsManager.getTopSpeed()+"");
-        avgSpeed.setText(gpsManager.getAvgSpeed()+"");
+        //TODO - convert values to have certain decimal places when within certain limits
+        distanceTraveled.setText(DecimalFormatter.roundToTwoDecimals(gpsManager.getDistance()) + "");
+        topSpeed.setText(DecimalFormatter.roundToOneDecimal(gpsManager.getTopSpeed()) + "");
+        avgSpeed.setText(DecimalFormatter.roundToOneDecimal(gpsManager.getAvgSpeed()) +"");
     }
 
 }
