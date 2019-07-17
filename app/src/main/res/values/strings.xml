@@ -16,4 +16,12 @@
     <string name="dist_unit">unit</string>
     <string name="record_start_button_text">Start</string>
     <string name="record_stop_button_text">Stop</string>
+    <string name="units_preference_text">Enable or disable metric units</string>
+    <string name="settings_buton_text">Settings</string>
+    <string name="units_preference_title">Enable metric units</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
 </resources>
