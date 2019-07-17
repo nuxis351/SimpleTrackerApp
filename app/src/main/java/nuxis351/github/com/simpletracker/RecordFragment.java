@@ -155,8 +155,12 @@ public class RecordFragment extends Fragment {
     };
 
     private void setRecordedViews(GPSManager gpsManager){
-        //TODO - convert values to have certain decimal places when within certain limits
-        distanceTraveled.setText(DecimalFormatter.roundToTwoDecimals(gpsManager.getDistance()) + "");
+        //TODO - determine value to switch to no decimal places for distance
+        if (gpsManager.getDistance() > 1000) {
+            distanceTraveled.setText(DecimalFormatter.removeDecimal(gpsManager.getDistance()) + "");
+        } else {
+            distanceTraveled.setText(DecimalFormatter.roundToTwoDecimals(gpsManager.getDistance()) + "");
+        }
         topSpeed.setText(DecimalFormatter.roundToOneDecimal(gpsManager.getTopSpeed()) + "");
         avgSpeed.setText(DecimalFormatter.roundToOneDecimal(gpsManager.getAvgSpeed()) +"");
     }

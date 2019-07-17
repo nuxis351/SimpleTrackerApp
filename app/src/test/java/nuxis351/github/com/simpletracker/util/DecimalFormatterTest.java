@@ -26,4 +26,14 @@ public class DecimalFormatterTest {
         assertEquals(expectedResult, result, 0);
     }
 
+    @Test
+    public void removeDecimalTest() {
+        double input = 24.2351251;
+        int expectedResult = 24;
+
+        int result = DecimalFormatter.removeDecimal(input);
+        System.out.println("Expected: " + expectedResult + " \nActual: " + result);
+        assertEquals(expectedResult, result, 0);
+    }
+
 }

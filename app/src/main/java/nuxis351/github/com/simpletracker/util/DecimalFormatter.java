@@ -12,4 +12,8 @@ public class DecimalFormatter {
         return Math.round(input * 10.0) / 10.0;
     }
 
+    public static int removeDecimal(double input) {
+        return (int) input;
+    }
+
 }
