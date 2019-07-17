@@ -35,6 +35,8 @@ import nuxis351.github.com.simpletracker.util.DecimalFormatter;
 
 public class RecordFragment extends Fragment {
     private static final String TAG = "RECORDFRAGMENTTAG";
+    private static final int DECIMAL_THRESHOLD = 1000;
+
     private Chronometer chrono;
     private OnChronoSwitchListener chronoCallbackListener;
     private LocationServiceController locationServiceController;
@@ -156,7 +158,7 @@ public class RecordFragment extends Fragment {
 
     private void setRecordedViews(GPSManager gpsManager){
         //TODO - determine value to switch to no decimal places for distance
-        if (gpsManager.getDistance() > 1000) {
+        if (gpsManager.getDistance() > DECIMAL_THRESHOLD) {
             distanceTraveled.setText(DecimalFormatter.removeDecimal(gpsManager.getDistance()) + "");
         } else {
             distanceTraveled.setText(DecimalFormatter.roundToTwoDecimals(gpsManager.getDistance()) + "");
