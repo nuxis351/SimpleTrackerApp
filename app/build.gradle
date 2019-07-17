@@ -26,9 +26,11 @@ dependencies {
     implementation 'com.android.support:support-v4:27.1.1'
     implementation 'com.karumi:dexter:4.2.0'
 
-    compile 'com.google.android.gms:play-services:6.5.87'
+    implementation 'com.google.android.gms:play-services:6.5.87'
 
     testImplementation 'junit:junit:4.12'
+    testImplementation "org.robolectric:robolectric:3.3.2"
+
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }

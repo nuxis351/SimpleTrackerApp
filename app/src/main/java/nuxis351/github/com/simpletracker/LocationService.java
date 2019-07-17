@@ -20,7 +20,7 @@ public class LocationService extends Service {
     protected LocationManager locationManager = null;
 
     private static final long LOCATION_INTERVAL = 1000;
-    private static final float LOCATION_DISTANCE = 1f;
+    private static final float LOCATION_DISTANCE = GPSManager.MIN_LOCATION_ACCURACY; // set distance interval to 0 to prevent missed distance
 
     private boolean locationUpdatesRequested = false;
 
@@ -39,6 +39,7 @@ public class LocationService extends Service {
         @Override
         public void onLocationChanged(Location location) {
             Log.v(TAG, "IN ON LOCATION CHANGE, lat=" + location.getLatitude() + ", lon=" + location.getLongitude());
+            Log.v(TAG, "IN ON LOCATION CHANGE, accuracy=" + location.getAccuracy());
             sendMessageToActivity(location, "GPS Location");
         }
 
