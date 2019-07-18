@@ -20,7 +20,7 @@ public class LocationService extends Service {
     protected LocationManager locationManager = null;
 
     private static final long LOCATION_INTERVAL = 1000;
-    private static final float LOCATION_DISTANCE = 0; // set distance interval to 0 to prevent missed distance
+    private static final float LOCATION_DISTANCE = GPSManager.MIN_LOCATION_ACCURACY; // set distance interval to 0 to prevent missed distance
 
     private boolean locationUpdatesRequested = false;
 
